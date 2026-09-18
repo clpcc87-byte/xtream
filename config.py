@@ -27,13 +27,13 @@ def decrypt():
         with open(rConfigPath, 'rb') as f:
             raw_data = f.read().strip()
             
-        # Descodifica o Base64 lidando com possíveis resíduos ou quebras de linha
+        # Descodifica o Base64 lidando com possÃ­veis resÃ­duos ou quebras de linha
         decoded_bytes = base64.b64decode(raw_data)
         
         # Chave XOR em formato de bytes
         key_bytes = b'5709650b0d7806074842c6de575025b1'
         
-        # Operação XOR expandida para evitar erros de sintaxe invisíveis
+        # OperaÃ§Ã£o XOR expandida para evitar erros de sintaxe invisÃ­veis
         decrypted_list = []
         for c, k in zip(decoded_bytes, cycle(key_bytes)):
             decrypted_list.append(c ^ k)
@@ -59,7 +59,7 @@ def encrypt(rInfo):
     json_bytes = json_str.encode('utf-8')
     key_bytes = b'5709650b0d7806074842c6de575025b1'
     
-    # Operação XOR expandida
+    # OperaÃ§Ã£o XOR expandida
     xor_list = []
     for c, k in zip(json_bytes, cycle(key_bytes)):
         xor_list.append(c ^ k)
